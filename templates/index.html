@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Tree Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="mb-4 text-center">📂 GitHub Repository Tree Viewer</h2>
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="github_url" class="form-label">GitHub Repo URL</label>
+                    <input type="url" class="form-control" id="github_url" name="github_url" placeholder="https://github.com/owner/repo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="branch" class="form-label">Branch (default: main)</label>
+                    <input type="text" class="form-control" id="branch" name="branch" placeholder="main">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Show Repo Structure</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
